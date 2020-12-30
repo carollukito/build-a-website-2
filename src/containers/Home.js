@@ -16,7 +16,7 @@ function Home() {
     <div className="flex flex-col h-screen">
       <City cityName={"Tokyo"} temp={"10°C"} color={"bg-purple-500"} />
 
-      <City cityName={"Jakarta"} temp={"24°C"} color={"bg-pink-500"} />
+      <City cityName={"Jakarta"} temp={"24°C"} color={"bg-red-500"} />
 
       <City cityName={"Bandung"} temp={"17°C"} color={"bg-blue-500"} />
     </div>
