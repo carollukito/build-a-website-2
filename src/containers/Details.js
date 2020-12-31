@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import WeatherImage from "../components/WeatherImage";
-import "../App.css";
 
 // TODO
 // - implement API
@@ -12,7 +10,7 @@ import "../App.css";
 function Details() {
   const history = useHistory();
   const [weatherData, setWeatherData] = useState(null);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("Jakarta");
 
   useEffect(() => {
     console.log(process.env.REACT_APP_WEATHER_KEY);
@@ -34,7 +32,7 @@ function Details() {
   useEffect(() => {
     const searchParams = history.location.search;
     const urlParams = new URLSearchParams(searchParams);
-    const city = urlParams.get("name");
+    const city = urlParams.get("city");
     if (city) {
       setCity(city);
     }
@@ -84,7 +82,6 @@ function Details() {
       <div className="p-8 text-2xl font-bold">Weather in {city}</div>
 
       <div className="flex flex-col p-8 m-4 border-2 rounded-md border-gray-700 items-center">
-        <WeatherImage weatherType={weatherType} className="text-xl" />
         <div>{weatherType}</div>
         <div>Current Temperature : {currentTemp}</div>
       </div>
