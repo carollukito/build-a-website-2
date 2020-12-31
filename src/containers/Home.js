@@ -72,7 +72,11 @@ function Home() {
     // Container
     <div className="flex flex-col h-screen bg-green-200">
       {cities.map((item, index) => (
-        <City cityName={item.name} temp={currentTemp} color={"bg-yellow-500"} />
+        <City
+          cityName={item.name}
+          temp={item.currentTemp}
+          color={"bg-yellow-500"}
+        />
       ))}
     </div>
   );
