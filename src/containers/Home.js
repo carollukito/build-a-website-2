@@ -14,44 +14,32 @@ function Home() {
       name: "Jakarta",
       currentTemp: "0",
       weatherType: "",
-      color: "bg-yellow-500",
+      color: "bg-yellow-200",
     },
     {
       name: "Tokyo",
       currentTemp: "0",
       weatherType: "",
-      color: "bg-red-500",
+      color: "bg-red-400",
     },
     {
       name: "Korea",
       currentTemp: "0",
       weatherType: "",
-      color: "bg-purple-500",
+      color: "bg-purple-200",
     },
     {
       name: "London",
       currentTemp: "0",
       weatherType: "",
-      color: "bg-blue-500",
+      color: "bg-blue-100",
     },
     {
       name: "Los Angeles",
       currentTemp: "0",
       weatherType: "",
-      color: "bg-green-500",
+      color: "bg-green-200",
     },
-    // {
-    //   name: "Taoyuan",
-    //   currentTemp: "0",
-    //   weatherType: "",
-    //   color: "bg-blue-500",
-    // },
-    // {
-    //   name: "New York",
-    //   currentTemp: "0",
-    //   weatherType: "",
-    //   color: "bg-blue-500",
-    // },
   ]);
 
   useEffect(() => {
@@ -130,8 +118,8 @@ function Home() {
   return (
     // Container
     <div className="flex flex-col h-screen bg-yellow-100">
-      <div className="text-4xl text-yellow-500 font-semibold text-center my-4">
-        Our Weather App
+      <div className="text-4xl text-indigo-300	 font-semibold text-center my-4">
+        Weather App
       </div>
 
       {cities.map((item, index) => (

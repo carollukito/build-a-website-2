@@ -80,7 +80,7 @@ function Details() {
 
   return (
     // Container
-    <div className="flex flex-col items-center h-screen bg-green-200">
+    <div className="flex flex-col items-center h-screen bg-yellow-100">
       <div className="p-8 text-2xl font-bold">Weather in {city}</div>
 
       <div className="flex flex-col p-8 m-4 border-2 rounded-md border-gray-700 items-center">
