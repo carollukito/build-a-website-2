@@ -118,7 +118,7 @@ function Home() {
   return (
     // Container
     <div className="flex flex-col h-screen bg-yellow-100">
-      <div className="text-4xl text-indigo-300	 font-semibold text-center my-4">
+      <div className="text-4xl text-indigo-300 font-bold text-center my-4">
         Weather App
       </div>
 
