@@ -32,9 +32,9 @@ function Details() {
   useEffect(() => {
     const searchParams = history.location.search;
     const urlParams = new URLSearchParams(searchParams);
-    const city = urlParams.get("city");
-    if (city) {
-      setCity(city);
+    const cityName = urlParams.get("name");
+    if (cityName) {
+      setCity(cityName);
     }
   }, [history]);
 
