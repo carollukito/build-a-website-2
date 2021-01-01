@@ -120,7 +120,7 @@ function Home() {
         weatherData = res;
         console.log(weatherData);
 
-        newCities[index].currentTemp = Math.round(weatherData.main.temp);
+        newCities[index].currentTemp = `${Math.round(weatherData.main.temp)}°C`;
         newCities[index].weatherType = weatherData.weather[0].main;
         setCities(newCities);
       });
