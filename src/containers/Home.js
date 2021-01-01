@@ -2,9 +2,6 @@ import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-import Header from "../components/Header";
-import WeatherImage from "../components/WeatherImage";
-
 import City from "../components/City";
 
 function Home() {
@@ -16,21 +13,42 @@ function Home() {
     {
       name: "Jakarta",
       currentTemp: "0",
+      weatherType: "",
       color: "bg-yellow-500",
     },
     {
       name: "Tokyo",
       currentTemp: "0",
+      weatherType: "",
       color: "bg-red-500",
+    },
+    {
+      name: "Korea",
+      currentTemp: "0",
+      weatherType: "",
+      color: "bg-purple-500",
     },
     {
       name: "London",
       currentTemp: "0",
+      weatherType: "",
       color: "bg-blue-500",
     },
+    // {
+    //   name: "Taoyuan",
+    //   currentTemp: "0",
+    //   weatherType: "",
+    //   color: "bg-blue-500",
+    // },
+    // {
+    //   name: "New York",
+    //   currentTemp: "0",
+    //   weatherType: "",
+    //   color: "bg-blue-500",
+    // },
   ]);
+
   useEffect(() => {
-    // console.log(process.env.REACT_APP_WEATHER_KEY);
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_KEY}`
@@ -42,7 +60,7 @@ function Home() {
       })
       .catch(function (error) {
         // The best practice of coding is to not use console.log
-        console.log(error);
+        console.warn(error);
       });
   }, [city]);
 
@@ -65,17 +83,57 @@ function Home() {
     };
   }, [weatherData]);
 
-  console.log("weatherData", weatherData);
-  console.log("currentTemp", currentTemp);
+  useEffect(() => {
+    updateAllWeatherData();
+  }, []);
+
+  async function fetchWeatherData(cityName) {
+    const res = await axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_WEATHER_KEY}`
+      )
+      .then(function (response) {
+        // Successful request
+        const weather = response.data;
+        return weather;
+      })
+      .catch(function (error) {
+        // The best practice of coding is to not use console.log
+        console.warn(error);
+      });
+
+    return res;
+  }
+
+  async function updateAllWeatherData(params) {
+    cities.forEach(function (citiesItems, index) {
+      let weatherData = {};
+      let newCities = [...cities];
+
+      fetchWeatherData(citiesItems.name).then((res) => {
+        weatherData = res;
+        console.log(weatherData);
+
+        newCities[index].currentTemp = weatherData.main.temp;
+        newCities[index].weatherType = weatherData.weather[0].main;
+        setCities(newCities);
+      });
+    });
+  }
 
   return (
     // Container
-    <div className="flex flex-col h-screen bg-green-200">
+    <div className="flex flex-col h-screen bg-green-100">
+      <div className="text-4xl text-yellow-500 font-semibold text-center my-4">
+        Our Weather App
+      </div>
+
       {cities.map((item, index) => (
         <City
           cityName={item.name}
+          weatherType={item.weatherType}
           temp={item.currentTemp}
-          color={"bg-yellow-500"}
+          color={item.color}
         />
       ))}
     </div>
