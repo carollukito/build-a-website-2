@@ -23,7 +23,7 @@ function Home() {
       color: "bg-red-400",
     },
     {
-      name: "Korea",
+      name: "Seoul",
       currentTemp: "0",
       weatherType: "",
       color: "bg-purple-200",
