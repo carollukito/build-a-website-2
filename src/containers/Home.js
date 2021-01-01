@@ -34,6 +34,12 @@ function Home() {
       weatherType: "",
       color: "bg-blue-500",
     },
+    {
+      name: "Los Angeles",
+      currentTemp: "0",
+      weatherType: "",
+      color: "bg-green-500",
+    },
     // {
     //   name: "Taoyuan",
     //   currentTemp: "0",
